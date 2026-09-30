@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verdant Aura</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f3f5ee;--card:#fff;--ink:#16291d;--mute:#5d6f62;--g:#1f5a3a;--g2:#dfe9d8;--gold:#b98a2e;--line:#d8dfd0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a13;--card:#182a1e;--ink:#eaf1e4;--mute:#9db1a1;--g:#6fc28f;--g2:#223a2a;--gold:#e0b458;--line:#2a4232}}
+:root[data-theme="dark"]{--bg:#0f1a13;--card:#182a1e;--ink:#eaf1e4;--mute:#9db1a1;--g:#6fc28f;--g2:#223a2a;--gold:#e0b458;--line:#2a4232}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 'DM Sans',system-ui,sans-serif;display:flex;flex-direction:column;max-width:520px;margin:0 auto}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700}
+header{padding:12px 16px 8px;display:flex;align-items:center;justify-content:space-between}
+header h1{font-size:22px;color:var(--g)}
+header small{display:block;color:var(--mute);font-size:11px}
+.cur{display:flex;gap:4px}
+.cur button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:4px 9px;font:inherit;font-size:12px}
+.cur button.on{background:var(--g);color:var(--bg);border-color:var(--g)}
+main{flex:1;overflow-y:auto;padding:4px 16px 16px}
+nav{display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;color:var(--mute);padding:9px 0 7px;font:inherit;font-size:11px;position:relative}
+nav button svg{display:block;margin:0 auto 2px;width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+nav button.on{color:var(--g);font-weight:700}
+.badge{position:absolute;top:3px;left:55%;background:var(--gold);color:#fff;border-radius:9px;font-size:10px;padding:0 5px}
+.hero{background:var(--g);color:#f3f5ee;border-radius:20px;padding:20px;margin:6px 0 14px}
+.hero h2{font-size:24px;line-height:1.15;margin-bottom:6px}
+.hero p{font-size:13px;opacity:.9}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pills span{background:rgba(255,255,255,.16);border-radius:12px;padding:3px 10px;font-size:12px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px}
+.chips button{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:16px;padding:6px 12px;font:inherit;font-size:13px}
+.chips button.on{background:var(--g2);border-color:var(--g);color:var(--g);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.card .lat{font-size:12px;color:var(--mute);font-style:italic}
+.card h3{font-size:18px;margin:2px 0}
+.card .q{color:var(--mute);font-size:13px;margin-bottom:10px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sz{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.sz button{border:1px solid var(--line);background:none;color:var(--ink);border-radius:10px;padding:5px 9px;font:inherit;font-size:12px}
+.sz button.on{border-color:var(--gold);background:var(--g2);font-weight:700}
+.price{font-family:'Fraunces',Georgia,serif;font-size:22px;color:var(--g)}
+.btn{background:var(--g);color:var(--bg);border:0;border-radius:12px;padding:10px 16px;font:inherit;font-weight:700;text-decoration:none;display:inline-block;text-align:center}
+.btn.alt{background:var(--g2);color:var(--g)}
+.btn.full{width:100%;margin-top:8px}
+.tag{font-size:11px;color:var(--gold);font-weight:700}
+label{display:block;font-weight:700;margin:12px 0 5px;font-size:13px}
+select,input{width:100%;padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.res{background:var(--g2);border-radius:14px;padding:14px;margin-top:14px}
+.res .big{font-family:'Fraunces',serif;font-size:32px;color:var(--g)}
+.kv{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;gap:12px}
+.kv b{text-align:right}
+.ph{border-left:3px solid var(--gold);padding:2px 0 2px 10px;margin:8px 0;font-size:13px}
+.ph b{display:block}
+.ph i{color:var(--mute);font-style:normal;font-size:12px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:16px}
+.qty span{display:inline-block;min-width:24px;text-align:center}
+.empty{text-align:center;color:var(--mute);padding:40px 10px}
+.toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:20px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+h2.s{font-size:20px;margin:8px 0}
+.note{font-size:12px;color:var(--mute);margin-top:8px}
+</style></head>
+<body>
+<header><div><h1>Verdant Aura</h1><small>Alcohol-free botanical hydro-glycerites</small></div>
+<div class="cur" id="cur"></div></header>
+<main id="main"></main>
+<nav id="nav"></nav>
+<div class="toast" id="toast"></div>
+<script>
+const EX=[
+{id:'guava',n:'Guava Leaf',l:'Psidium guajava',t:'Scalp & Skin Clarity',q:'Botanical antioxidant care from the guava leaf',p:3.2,c:'hair',ph:'Polyphenols, Guajavarin',note:'Add to the cooling aqueous phase below 40°C to protect thermolabile flavonoids.',tag:''},
+{id:'aloe',n:'Aloe Vera',l:'Aloe barbadensis',t:'Hydration & Barrier Comfort',q:'Pure hydration, straight from the leaf',p:1.75,c:'hydr',ph:'Polysaccharides, Acemannan',note:'Add in the cool-down phase below 40°C.',tag:'Best seller at 5 kg'},
+{id:'rose',n:'Rosemary',l:'Rosmarinus officinalis',t:'Hair Density & Scalp Tonic',q:'Carnosic acid micro-circulation stimulant for hair density',p:3.8,c:'hair',ph:'Carnosic acid, Rosmarinic acid',note:'Add below 40°C to preserve carnosic acid.',tag:'High demand at 5 kg'},
+{id:'cham',n:'Chamomile',l:'Matricaria chamomilla',t:'Calming Comfort & Sensitive Skin',q:'Calm, comfort and gentle everyday care',p:3.8,c:'sens',ph:'Apigenin, Bisabolol',note:'Add in the cool-down phase below 40°C.',tag:'High demand at 5 kg'}];
+const SIZES=['50 ml','250 ml','1 L','5 kg','20 kg'];
+const FX={USD:1,SAR:3.75,EGP:50};
+const FILT=[['all','All'],['hair','Scalp & hair'],['sens','Soothing'],['hydr','Hydration']];
+const HUB={EG:{name:'Alexandria',num:'201212727005',disp:'+20 121 272 7005'},KSA:{name:'Dammam',num:'966531436055',disp:'+966 53 143 6055'}};
+let S={tab:'shop',cur:'USD',filt:'all',sel:{},cart:[],calc:{id:'guava',batch:1000,dose:3},hub:'EG'};
+const $=s=>document.querySelector(s);
+const money=v=>{const x=v*FX[S.cur];return (S.cur==='USD'?'$':S.cur+' ')+(x<10?x.toFixed(2):Math.round(x).toLocaleString())};
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1400)};
+const ic={shop:'<path d="M5 8h14l-1 12H6zM9 8a3 3 0 016 0"/>',calc:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h2M16 12h0M8 16h2M12 16h2"/>',lab:'<path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/>',b2b:'<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V5h6v3"/>',cart:'<circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M3 4h3l2.5 11h10L21 7H7"/>'};
+function sel(id){return S.sel[id]||'50 ml'}
+function add(id){const e=EX.find(x=>x.id===id),s=sel(id);
+ if(s!=='50 ml'){return quote(e.n+' — '+s)}
+ const f=S.cart.find(c=>c.id===id);f?f.q++:S.cart.push({id,q:1});toast(e.n+' added');render()}
+function quote(what){const h=HUB[S.hub];window.open('https://wa.me/'+h.num+'?text='+encodeURIComponent('Hello Verdant Aura, I would like a price quote for: '+what),'_blank')}
+function shop(){const list=EX.filter(e=>S.filt==='all'||e.c===S.filt);
+ return `<div class="hero"><h2>Farm grown in Al Bohira. Bottled without alcohol.</h2><p>Hydro-glycerite extracts in water and USP vegetable glycerin, micron-filtered for formulators and clean beauty brands.</p><div class="pills"><span>0% alcohol</span><span>Micron filtered</span><span>Medical grade</span><span>Farm grown</span></div></div>
+ <div class="chips">${FILT.map(f=>`<button class="${S.filt===f[0]?'on':''}" data-f="${f[0]}">${f[1]}</button>`).join('')}</div>`+
+ list.map(e=>{const s=sel(e.id),small=s==='50 ml';return `<div class="card"><div class="lat">${e.l}</div><h3>${e.n} Hydro-Glycerite</h3><div class="tag">${e.t}</div><div class="q">${e.q}</div>
+ <div class="sz">${SIZES.map(z=>`<button class="${z===s?'on':''}" data-id="${e.id}" data-z="${z}">${z}</button>`).join('')}</div>
+ <div class="row"><div>${small?`<span class="price">${money(e.p)}</span><div class="note" style="margin:0">50 ml / 1.7 fl oz amber dropper</div>`:`<b>Bulk pricing on request</b><div class="note" style="margin:0">${e.tag&&(s==='5 kg')?e.tag:'Lot-traceable COA included'}</div>`}</div>
+ <button class="btn" data-add="${e.id}">${small?'Add to cart':'Get quote'}</button></div></div>`}).join('')}
+function calc(){const c=S.calc,e=EX.find(x=>x.id===c.id),g=c.batch*c.dose/100,cost=g*e.p/50,pack=g<=50?'50 ml dropper':g<=250?'250 ml pack':g<=1000?'1 L pack':'5 kg jug';
+ return `<h2 class="s">Batch dosage calculator</h2>
+ <label>Extract</label><select id="c-id">${EX.map(x=>`<option value="${x.id}" ${x.id===c.id?'selected':''}>${x.n} Hydro-Glycerite</option>`).join('')}</select>
+ <label>Batch weight (g)</label><input id="c-b" type="number" inputmode="decimal" min="1" value="${c.batch}">
+ <label>Dosage: <span id="dv">${c.dose}</span>%</label><input id="c-d" type="range" min="0.5" max="10" step="0.5" value="${c.dose}">
+ <div class="res"><div class="note" style="margin:0">Extract required</div><div class="big" id="r-g">${g.toFixed(1)} g</div><div class="note" id="r-s" style="margin:0">Deduct ${g.toFixed(1)} g from your water phase to keep the formula at 100%.</div></div>
+ <div class="card" style="margin-top:12px"><div class="kv"><span>Active phytochemicals</span><b>${e.ph}</b></div><div class="kv"><span>Suggested pack</span><b id="r-p">${pack}</b></div><div class="kv"><span>Estimated raw cost</span><b id="r-c">${money(cost)}</b></div><div class="kv" style="border:0"><span>Phase guidance</span><b>${e.note}</b></div></div>
+ <button class="btn full" data-tab="shop">Shop extracts</button><p class="note">Cost uses the 50 ml retail price per ml; bulk packs are cheaper per ml.</p>`}
+function lab(){const R=[['Botanical Hair Density & Follicle Tonic','Beginner','Guava 3% + Rosemary 2% · 5% actives','Weightless, alcohol-free serum to strengthen roots and refresh the scalp without greasiness.',[['A · Water base','25°C','Distilled rose water 88%, Niacinamide 2%, Panthenol B5 1%'],['B · Botanical actives','Below 35°C','Guava Leaf 3%, Rosemary 2%'],['C · Preservation & pH','25°C','Eco-certified preservative 1%, citric acid to pH 5.2']],['guava','rose']],
+['Restorative Chamomile & Aloe Soothing Gel-Cream','Professional','Chamomile 3.5% + Aloe 4% · 7.5% actives','Fast-absorbing, barrier-mimicking emulsion for reactive, post-peel or rosacea-prone skin.',[['A · Oil phase','Heat to 75°C','Jojoba oil 8%, Squalane 4%, Cetearyl olivate 3%'],['B · Aqueous phase','Heat to 75°C','Deionized water 72%, Allantoin 0.5%, Hyaluronic acid 0.5%'],['C · Cool-down actives','Add at 38°C','Chamomile 3.5%, Aloe Vera 4%, Vitamin E 0.5%']],['cham','aloe']]];
+ return `<h2 class="s">Formulation lab recipes</h2><p class="note" style="margin:0 0 10px">Prototype formulas tested in our Alexandria laboratory.</p>`+R.map(r=>`<div class="card"><div class="tag">${r[1]}</div><h3>${r[0]}</h3><div class="lat">${r[2]}</div><p style="margin:6px 0">${r[3]}</p>${r[4].map(p=>`<div class="ph"><b>${p[0]} <i>${p[1]}</i></b>${p[2]}</div>`).join('')}<button class="btn full" data-addmany="${r[5].join(',')}">Add both extracts to cart</button></div>`).join('')}
+function b2b(){const h=HUB[S.hub];
+ return `<h2 class="s">Wholesale & contract manufacturing</h2>
+ <div class="card"><h3>Supply you can audit</h3><p class="note" style="margin-top:4px">Every lot ships with a Certificate of Analysis, microbiological assays (under 100 CFU/g), physical-chemical parameters, INCI compliance, MSDS and TDS. Pallet freight from Alexandria or Dammam.</p>
+ <button class="btn full" data-quote="the wholesale price sheet (5 kg / 20 kg)">Request wholesale price sheet</button><button class="btn alt full" data-quote="lab batch samples">Request lab samples</button></div>
+ <div class="card"><h3>Custom maceration</h3><p class="note" style="margin-top:4px">Plant-to-solvent ratios of 1:5 or 1:10, organic-certified glycerine or wildcrafted Mediterranean flora. Programs from 20 kg pilot to 1,000 kg drums.</p></div>
+ <div class="card"><h3>Specifications</h3>${[['Medium','USP 99.7% vegetable glycerin + distilled water'],['Ratio','1:5 or 1:10 herb to menstruum'],['Alcohol','0.0%'],['Filtration','Micron filtered'],['Origin','Al Bohira, Egypt (own farm)'],['Preservatives','Sodium benzoate & potassium sorbate, under 0.3%'],['Solubility','100% water soluble'],['Testing','Batch COA, heavy metals & pathogen assays']].map(k=>`<div class="kv"><span>${k[0]}</span><b>${k[1]}</b></div>`).join('')}</div>
+ <div class="card"><h3>Contact</h3><div class="chips" style="padding-bottom:6px"><button class="${S.hub==='EG'?'on':''}" data-hub="EG">Alexandria, EG</button><button class="${S.hub==='KSA'?'on':''}" data-hub="KSA">Dammam, KSA</button></div>
+ <p class="note" style="margin:0 0 8px">${S.hub==='EG'?'Extraction lab & R&D':'GCC fulfillment desk'}</p>
+ <a class="btn full" href="tel:+${h.num}">Call ${h.disp}</a><a class="btn alt full" href="https://wa.me/${h.num}" target="_blank" rel="noopener">WhatsApp</a><a class="btn alt full" href="mailto:verdant.aura.mg@gmail.com">verdant.aura.mg@gmail.com</a></div>`}
+function cart(){if(!S.cart.length)return `<div class="empty"><h3>Your cart is empty</h3><p>Add 50 ml droppers from the shop.</p><button class="btn" data-tab="shop" style="margin-top:14px">Browse extracts</button></div>`;
+ const tot=S.cart.reduce((a,c)=>a+c.q*EX.find(x=>x.id===c.id).p,0);
+ return `<h2 class="s">Your cart</h2><div class="card">`+S.cart.map(c=>{const e=EX.find(x=>x.id===c.id);return `<div class="item"><div><b>${e.n} Hydro-Glycerite</b><div class="note" style="margin:0">50 ml · ${money(e.p)}</div></div><div class="qty"><button data-m="${c.id}">−</button><span>${c.q}</span><button data-p="${c.id}">+</button></div></div>`}).join('')+`<div class="row" style="margin-top:12px"><b>Total</b><span class="price">${money(tot)}</span></div></div>
+ <div class="chips"><button class="${S.hub==='EG'?'on':''}" data-hub="EG">Ship from Alexandria</button><button class="${S.hub==='KSA'?'on':''}" data-hub="KSA">Ship from Dammam</button></div>
+ <button class="btn full" data-order="1">Send order on WhatsApp</button><p class="note">Your order opens as a message to the ${HUB[S.hub].name} desk, which confirms shipping and payment.</p>`}
+const TABS=[['shop','Shop',shop],['calc','Calculator',calc],['lab','Recipes',lab],['b2b','Business',b2b],['cart','Cart',cart]];
+function render(){const y=$('#main').scrollTop;
+ $('#cur').innerHTML=Object.keys(FX).map(k=>`<button class="${S.cur===k?'on':''}" data-cur="${k}">${k}</button>`).join('');
+ const n=S.cart.reduce((a,c)=>a+c.q,0);
+ $('#nav').innerHTML=TABS.map(t=>`<button class="${S.tab===t[0]?'on':''}" data-tab="${t[0]}"><svg viewBox="0 0 24 24">${ic[t[0]==='cart'?'cart':t[0]]}</svg>${t[1]}${t[0]==='cart'&&n?`<span class="badge">${n}</span>`:''}</button>`).join('');
+ $('#main').innerHTML=TABS.find(t=>t[0]===S.tab)[2]();$('#main').scrollTop=y}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-tab],[data-cur],[data-f],[data-z],[data-add],[data-addmany],[data-quote],[data-hub],[data-m],[data-p],[data-order]');if(!b)return;const d=b.dataset;
+ if(d.tab){S.tab=d.tab;render();$('#main').scrollTop=0}
+ else if(d.cur){S.cur=d.cur;render()}
+ else if(d.f){S.filt=d.f;render()}
+ else if(d.z){S.sel[d.id]=d.z;render()}
+ else if(d.add)add(d.add)
+ else if(d.addmany){d.addmany.split(',').forEach(id=>{const f=S.cart.find(c=>c.id===id);f?f.q++:S.cart.push({id,q:1})});toast('Extracts added');render()}
+ else if(d.quote)quote(d.quote)
+ else if(d.hub){S.hub=d.hub;render()}
+ else if(d.m){const f=S.cart.find(c=>c.id===d.m);f.q--;if(f.q<1)S.cart=S.cart.filter(c=>c!==f);render()}
+ else if(d.p){S.cart.find(c=>c.id===d.p).q++;render()}
+ else if(d.order){const tot=S.cart.reduce((a,c)=>a+c.q*EX.find(x=>x.id===c.id).p,0);
+  const msg='Hello Verdant Aura, I would like to order:\n'+S.cart.map(c=>'• '+c.q+' × '+EX.find(x=>x.id===c.id).n+' Hydro-Glycerite 50 ml').join('\n')+'\nTotal: '+money(tot);
+  window.open('https://wa.me/'+HUB[S.hub].num+'?text='+encodeURIComponent(msg),'_blank')}});
+document.addEventListener('input',e=>{const t=e.target;if(!t.id||t.id[0]!=='c')return;
+ if(t.id==='c-id'){S.calc.id=t.value;render();return}
+ if(t.id==='c-b')S.calc.batch=Math.max(0,+t.value||0);
+ if(t.id==='c-d')S.calc.dose=+t.value;
+ const c=S.calc,e2=EX.find(x=>x.id===c.id),g=c.batch*c.dose/100;
+ $('#dv').textContent=c.dose;$('#r-g').textContent=g.toFixed(1)+' g';$('#r-s').textContent='Deduct '+g.toFixed(1)+' g from your water phase to keep the formula at 100%.';
+ $('#r-p').textContent=g<=50?'50 ml dropper':g<=250?'250 ml pack':g<=1000?'1 L pack':'5 kg jug';$('#r-c').textContent=money(g*e2.p/50)});
+render();
+</script></body></html>
